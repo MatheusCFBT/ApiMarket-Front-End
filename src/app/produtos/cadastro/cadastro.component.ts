@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-cadastro',
   standalone: true,
   imports: [],
-  templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.css'
+  templateUrl: './cadastro.component.html'
 })
 export class CadastroComponent {
 

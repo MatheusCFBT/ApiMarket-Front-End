@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-lista',
   standalone: true,
   imports: [],
-  templateUrl: './lista.component.html',
-  styleUrl: './lista.component.css'
+  templateUrl: './lista.component.html'
 })
 export class ListaComponent {
 
