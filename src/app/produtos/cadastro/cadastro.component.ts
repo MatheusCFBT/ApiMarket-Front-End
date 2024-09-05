@@ -1,21 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { Produto } from '../models/Produto';
 import { Observable } from 'rxjs';
+import { Fornecedor } from '../models/Fornecedor';
+import { ProdutoService } from '../services/produtoService'
+
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  templateUrl: './cadastro.component.html'
+  templateUrl: './cadastro.component.html',
+  imports: [CommonModule, FormsModule, ReactiveFormsModule]
 })
-export class CadastroComponent implements OnInit{
-  produtoForm: FormGroup;
-  produto: Produto;
+
+export class CadastroComponent implements OnInit {
+  
+  produtoForm!: FormGroup;
+  produto!: Produto;
   errors: any[] =[];
-  fornecedores: Fornecedor[];
+  fornecedores!: Fornecedor[];
   imagemForm: any;
-  imagemNome: string;
+  imagemNome!: string;
   imageBase64: any;
 
   constructor(private fb: FormBuilder,
@@ -48,7 +55,7 @@ export class CadastroComponent implements OnInit{
     if(this.produtoForm.valid && this.produtoForm.dirty){
       
       let produtoForm = Object.assign({}, this.produto, this.produtoForm.value);
-      produtoForm.ativo= this.produtoForm.get('ativo').value;
+      produtoForm.ativo= this.produtoForm.get('ativo')!.value;
 
       this.produtoHandle(produtoForm)
         .subscribe(
@@ -74,6 +81,13 @@ export class CadastroComponent implements OnInit{
     formData.append('produto',JSON.stringify(produto));
     formData.append('ImagemUpload', this.imagemForm, this.imagemNome);
 
+    return this.produtoService.registrarProdutoAlternativo(formData);
+  }
+
+  produtoHandle(produto: Produto): Observable<Produto> {
+    produto.imagem = this.imagemNome;
+    produto.imagemUpload = this.imageBase64;
+
     return this.produtoService.registrarProduto(produto);
   }
 
@@ -82,7 +96,7 @@ export class CadastroComponent implements OnInit{
     this.imagemNome = file[0].name;
 
     var reader = new FileReader();
-    reader.onload = this.manipularReader.Bind(this);
+    reader.onload = this.manipularReader.bind(this);
     reader.readAsBinaryString(file[0]);
   }
 

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './navegacao/home/home.component';
-import CadastroComponent from './produtos/cadastro/cadastro.component';
+import { CadastroComponent } from './produtos/cadastro/cadastro.component';
 import { ListaComponent } from './produtos/lista/lista.component';
 
 export const routes: Routes = [
