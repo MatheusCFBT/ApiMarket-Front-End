@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+.btn-apiMarket{
+    background-image: linear-gradient(to right, rgb(96, 0, 250) , rgb(198, 0, 238));
+    color: aliceblue;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-apiMarket:hover{
+    background-image: linear-gradient(to right, rgb(96, 0, 250), rgb(198, 0, 238)); /* Mantém o gradiente no hover */
+    color: white; /* Muda a cor do texto no hover */
+    border-color: rgba(96, 0, 250, 0.8); /* Adiciona uma borda visível no hover */
+    box-shadow: 0 0 10px rgba(96, 0, 250, 0.5); /* Sombra leve para destacar o botão */
+}
+
+.gradient{
+    background: linear-gradient(to right, rgb(96, 0, 250) , rgb(198, 0, 238));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-outline-apiMarket{
+    background-color: transparent; /* Fundo transparente */
+    border: 1px solid; /* Borda visível */
+    border-image: linear-gradient(to right, rgb(96, 0, 250), rgb(198, 0, 238)) 1; /* Gradiente na borda */
+    color: rgb(96, 0, 250);
+    background-image: linear-gradient(white, white), 
+                      linear-gradient(to right, rgb(96, 0, 250), rgb(198, 0, 238));
+    background-clip: padding-box, border-box;
+    transition-duration: 0.3s;
+    outline: none;
+}
+
+.btn-outline-apiMarket:hover{
+    background-image: linear-gradient(to right, rgb(96, 0, 250), rgb(198, 0, 238)); /* Preenche o gradiente no fundo */
+    color: white; /* Muda a cor do texto para branco */
+    border: none;
+}
