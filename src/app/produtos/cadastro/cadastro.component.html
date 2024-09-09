@@ -31,7 +31,7 @@
             <div class="col-12">
               <label for="ImagemUpload" class="form-label">Imagem do produto</label>
               <input accept="image/jpeg" #fileInput (change)="upload(fileInput.files)" formControlName="ImagemUpload"
-              type="file" class="custom-file-input" id="ImagemUpload" name="ImagemUpload" data-val="true"
+              type="file" class="form-control" id="ImagemUpload" name="ImagemUpload" data-val="true"
               data-val-required="Preencha o campo Imagem">
               <label data-browse="Procurar" style="width: 400 px;" class="custom-file-label" for="ImagemUpload"></label>
               <label *ngIf="imagemNome" id="img_nome">{{ imagemNome }}</label>
