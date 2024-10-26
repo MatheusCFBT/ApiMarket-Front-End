@@ -48,11 +48,11 @@
             </div>
 
             <div class="col-md-5">
-              <label for="FornecedorId" class="form-label">Fornecedor</label>
-              <select class="form-control" data-val="true" formControlName="FornecedorId"
-               id="FornecedorId" data-val-required="O campo fornecedor é obrigatório" name="FornecedorId">
+              <label for="fornecedorId" class="form-label">Fornecedor</label>
+              <select class="form-control" data-val="true" formControlName="fornecedorId"
+               id="fornecedorId" data-val-required="O campo fornecedor é obrigatório" name="fornecedorId">
                 <option></option>
-                <option *ngFor='let fornecedor of fornecedores' value="{{ fornecedor.id }}">{{ fornecedor.nome }}</option>
+                <option *ngFor='let fornecedor of fornecedores || []' value="{{ fornecedor.id }}">{{ fornecedor.nome }}</option>
               </select>
             </div>
 

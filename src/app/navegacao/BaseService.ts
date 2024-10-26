@@ -2,7 +2,7 @@ import { HttpHeaders } from "@angular/common/http";
 import { throwError } from "rxjs";
 
 export abstract class BaseService{
-    protected UrlServiceV1: string = "http://localhost:5000/api/";
+    protected UrlServiceV1: string = "http://localhost:5199/api/";
 
     protected ObterHeaderFormData(){
         return {

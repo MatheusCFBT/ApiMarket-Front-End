@@ -20,7 +20,7 @@ export class CadastroComponent implements OnInit {
   produtoForm!: FormGroup;
   produto!: Produto;
   errors: any[] =[];
-  fornecedores!: Fornecedor[];
+  fornecedores: Fornecedor[] = [];
   imagemForm: any;
   imagemNome!: string;
   imageBase64: any;
@@ -30,10 +30,10 @@ export class CadastroComponent implements OnInit {
               private produtoService: ProdutoService) {
 
     this.produtoService.obterFornecedores()
-      .subscribe(
-        fornecedores => this.fornecedores = fornecedores,
-        fail => this.errors = fail.error.errors
-      );
+      .subscribe({
+        next: fornecedores => this.fornecedores = fornecedores,
+        error: fail => this.errors = fail.error?.errors
+        });
     
     this.imagemForm = new FormData();
   }
@@ -58,10 +58,10 @@ export class CadastroComponent implements OnInit {
       produtoForm.ativo= this.produtoForm.get('ativo')!.value;
 
       this.produtoHandle(produtoForm)
-        .subscribe(
-          result => {this.onSaveComplete(result)},
-          fail => {this.onError(fail)}
-        );
+        .subscribe({
+          next: result => {this.onSaveComplete(result)},
+          error: fail => {this.onError(fail)}
+      });
     }
   }
 
